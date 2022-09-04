@@ -14,10 +14,18 @@ let outcomeTimerId
 let currentTime = 20
 
 function moveFrog(e) {
+    //you go into your squares array, which is all the squares in the grid
+    //by using the (e) above, you are passing the event into the function
+    //and using switch to listen for a key
+    //the remove part is use to remove the previous space the frog was
+    //after removing, it follows the sequence of moving the frog
     squares[currentIndex].classList.remove('frog')
+
 
     switch(e.key) {
         case 'ArrowLeft' :
+            //if the position of frog divided by the width of the board does not equal 0
+            //the currentIndex of frog -1
              if (currentIndex % width !== 0) currentIndex -= 1
             break
         case 'ArrowRight' :
@@ -30,6 +38,7 @@ function moveFrog(e) {
             if (currentIndex + width < width * width) currentIndex += width
             break
     }
+    //whichever square or div the index is you add the class of frog
     squares[currentIndex].classList.add('frog')
 }
 
@@ -48,6 +57,8 @@ function checkOutComes() {
 }
 
 function moveLogLeft(logLeft) {
+    //switch case again but this time is without the event, interesting
+    //because the event in this case if logLeft
     switch(true) {
         case logLeft.classList.contains('l1') :
             logLeft.classList.remove('l1')
