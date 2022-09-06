@@ -43,8 +43,14 @@ function moveFrog(e) {
 }
 
 function autoMoveElements() {
+    //you start this function by removing one from time, as a countdown
+    //then you display it
     currentTime--
     timeLeftDisplay.textContent = currentTime
+    //when doing the forEach and then follow by the => it means you are passing
+    // the before .forEach through a function
+    // in this case the function names are 
+    // moveLogLeft, moveCarLeft and so on
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
     logsRight.forEach(logRight => moveLogRight(logRight))
     carsLeft.forEach(carLeft => moveCarLeft(carLeft))
@@ -60,6 +66,8 @@ function moveLogLeft(logLeft) {
     //switch case again but this time is without the event, interesting
     //because the event in this case if logLeft
     switch(true) {
+        //by calling it this way, you are saying if a log has l1, remove the l1 and add it as l2
+        //doing so will be the image of moving
         case logLeft.classList.contains('l1') :
             logLeft.classList.remove('l1')
             logLeft.classList.add('l2')
@@ -144,11 +152,15 @@ function moveCarRight(carRight) {
 
 function lose() {
     if (
+        //you get all the squares from the board by starting with squares
+        // then check the index, and if that index contains a class of a car c1 or water l4, l5
         squares[currentIndex].classList.contains('c1') ||
         squares[currentIndex].classList.contains('l4') ||
         squares[currentIndex].classList.contains('l5') ||
+        // or the current time is 0, then you lose
         currentTime <= 0
     ) {
+        //if the statement above is true, then this will run
         resultDisplay.textContent = 'You lose!'
         clearInterval(timerId)
         clearInterval(outcomeTimerId)
