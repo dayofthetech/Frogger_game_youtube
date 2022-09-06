@@ -26,7 +26,7 @@ function moveFrog(e) {
         case 'ArrowLeft' :
             //if the position of frog divided by the width of the board does not equal 0
             //the currentIndex of frog -1
-             if (currentIndex % width !== 0) currentIndex -= 1
+            if (currentIndex % width !== 0) currentIndex -= 1
             break
         case 'ArrowRight' :
             if (currentIndex % width < width - 1) currentIndex += 1
@@ -49,7 +49,7 @@ function autoMoveElements() {
     timeLeftDisplay.textContent = currentTime
     //when doing the forEach and then follow by the => it means you are passing
     // the before .forEach through a function
-    // in this case the function names are 
+    // in this case the function names are
     // moveLogLeft, moveCarLeft and so on
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
     logsRight.forEach(logRight => moveLogRight(logRight))
